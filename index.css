@@ -200,8 +200,8 @@ ul {
 	-webkit-appearance: none;
 	appearance: none
 	display: block;
-	cursor: pointer;
-	background: rgba(240, 84, 77, 1);
+	background: rgba(253, 137, 20, 0.8);
+	border-radius: 2.25rem;
 }
 
 

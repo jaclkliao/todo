@@ -17,7 +17,7 @@ var vm = new Vue({
         todo:'',
         edtorTodos:'',//记录正在编辑的数据,
         beforeTitle:"",//记录正在编辑的数据的title
-        visibility:"all"//通过这个属性值的变化对数据进行筛选
+        visibility:"all",//通过这个属性值的变化对数据进行筛选
     },
     watch:{
         //下面的这种方法是浅监控
@@ -61,7 +61,10 @@ var vm = new Vue({
             item.title = this.beforeTitle;
             this.beforeTitle = '';
             this.edtorTodos='';
-        }
+        },
+				clearList(item){
+					this.list = []
+				}
     },
     directives:{
         "focus":{
@@ -93,7 +96,7 @@ var vm = new Vue({
                     return list.filter(item=>{
                         return !item.isComplete;
                     })
-                }
+                },
             }
             //如果找到了过滤函数，就返回过滤后的数据，如果没有找到就返回所有的数据
             return filter[this.visibility]?filter[this.visibility](list):list;

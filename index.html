@@ -3,31 +3,34 @@
 <head>
     <meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title>Title</title>
+    <title>GetTodo</title>
     <link rel="stylesheet" href="index.css">
     <script src="./vue.js"></script>
 </head>
 <body>
 <div class="page-top">
     <div class="page-content">
-        <h2>任务计划列表</h2>
+        <p>任务计划列表</p>
     </div>
 </div>
 <div class="main">
     <h3 class="big-title">添加任务：</h3>
     <input
-            placeholder="例如：吃饭睡觉打豆豆；    提示：+回车即可添加任务"
+            placeholder="请输入添加的任务  提示：+回车即可添加任务"
             class="task-input"
             type="text"
            v-on:keyup.enter="enterFn"
             v-model="todo"
     />
     <ul class="task-count">
-        <li>{{unComplete}}个任务未完成</li>
+        <li style="margin-top:0.125rem;">{{unComplete}}个任务未完成</li>
+				<li>
+					<input class="task-clear" type="button" @click="clearList" value="清除" />
+				</li>
         <li class="action">
-            <a :class="{active:visibility!=='unCompleted'&&visibility!=='completed'}" href="#all">所有任务</a>
-            <a :class="{active:visibility==='unCompleted'}" href="#unCompleted">未完成的任务</a>
-            <a :class="{active:visibility==='completed'}" href="#completed">完成的任务</a>
+            <a :class="{active:visibility!=='unCompleted'&&visibility!=='completed'&&visibility!=='clearList'}" href="#all">所有任务</a>
+            <a :class="{active:visibility==='unCompleted'}" href="#unCompleted">未完成</a>
+            <a :class="{active:visibility==='completed'}" href="#completed">已完成</a>
         </li>
     </ul>
     <h3 class="big-title">任务列表：</h3>
